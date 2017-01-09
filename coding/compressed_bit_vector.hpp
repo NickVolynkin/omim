@@ -108,7 +108,7 @@ public:
       for (size_t j = 0; j < kBlockSize; ++j)
       {
         if (((m_bitGroups[i] >> j) & 1) > 0)
-          f(kBlockSize * i + j);
+          f(static_cast<uint32_t>(kBlockSize * i + j));
       }
     }
   }
@@ -148,7 +148,7 @@ public:
   void ForEach(TFn && f) const
   {
     for (auto const & position : m_positions)
-      f(position);
+      f(static_cast<uint32_t>(position));
   }
 
   // CompressedBitVector overrides:

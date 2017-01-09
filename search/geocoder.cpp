@@ -958,7 +958,7 @@ void Geocoder::MatchCities(BaseContext & ctx)
 void Geocoder::MatchAroundPivot(BaseContext & ctx)
 {
   auto const features = RetrieveGeometryFeatures(*m_context, m_params.m_pivot, RECT_ID_PIVOT);
-  ViewportFilter filter(features, m_preRanker.Limit() /* threshold */);
+  ViewportFilter filter(features, static_cast<uint32_t>(m_preRanker.Limit()) /* threshold */);
   LimitedSearch(ctx, filter);
 }
 

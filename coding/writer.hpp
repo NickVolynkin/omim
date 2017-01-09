@@ -58,7 +58,7 @@ public:
 
     memcpy(&m_Data[m_Pos], p, min(size, static_cast<size_t>(freeSize)));
 
-    if (size > freeSize)
+    if (size > static_cast<size_t>(freeSize))
     {
       uint8_t const * it = reinterpret_cast<uint8_t const *>(p);
       m_Data.insert(m_Data.end(), it + freeSize, it + size);
@@ -127,7 +127,7 @@ private:
   int64_t m_pos;
   int64_t m_maxPos;
 #ifdef DEBUG
-  int64_t const m_offset;
+  uint64_t const m_offset;
 #endif
 };
 

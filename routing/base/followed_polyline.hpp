@@ -53,9 +53,8 @@ public:
     size_t m_ind;
 
     Iter(m2::PointD pt, size_t ind) : m_pt(pt), m_ind(ind) {}
-    Iter() : m_ind(-1) {}
-
-    bool IsValid() const { return m_ind != -1; }
+    Iter() : m_ind(std::numeric_limits<size_t>::max()) {}
+    bool IsValid() const { return m_ind != std::numeric_limits<size_t>::max(); }
   };
 
   const Iter GetCurrentIter() const { return m_current; }
